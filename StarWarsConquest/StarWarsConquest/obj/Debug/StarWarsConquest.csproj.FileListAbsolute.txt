@@ -1,0 +1,11 @@
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\bin\Debug\StarWarsConquest.exe.config
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\bin\Debug\StarWarsConquest.exe
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\bin\Debug\StarWarsConquest.pdb
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.csprojAssemblyReference.cache
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.Building_Interface.resources
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.Form1.resources
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.Properties.Resources.resources
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.csproj.GenerateResource.cache
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.csproj.CoreCompileInputs.cache
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.exe
+C:\Users\Gebruiker\source\repos\StarWarsConquest\StarWarsConquest\obj\Debug\StarWarsConquest.pdb
