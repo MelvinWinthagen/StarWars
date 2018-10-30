@@ -209,7 +209,7 @@ namespace StarWarsConquest
                     {
                         if (Selection == Buttons2[i + 2].Name)
                         {
-                            MessageBox.Show(phase.ToString());
+                            //MessageBox.Show(phase.ToString());
                             if (phase == 2)
                             {
                                 MessageBox.Show("You have selected : " + CardsInPlay[i].Name);
@@ -220,11 +220,12 @@ namespace StarWarsConquest
                             {
                                 if (Clicked)
                                 {
-                                    MessageBox.Show("Geile Beer");
+                                    //MessageBox.Show("Geile Beer");
                                     if (Selection == Buttons2[i + 2].Name)
                                     {
-                                        CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name; //Assign the linked button to the card
+                                        CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
                                         i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
+                                        //MessageBox.Show("Appelsapsaus");
                                         for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                         {
                                             if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
@@ -233,31 +234,41 @@ namespace StarWarsConquest
                                             }
                                         }
                                         MessageBox.Show("You selected " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton);
+                                        //Clicked = !Clicked;
                                     }
                                 }
 
-                                else
+                                
+
+                                else if (!Clicked)
                                 {
                                     if (Selection == Buttons2[i + 2].Name)
                                     {
-                                        for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
+                                        if (Selection == Buttons2[i + 2].Name)
                                         {
-                                            if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
+                                            CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
+                                            i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
+                                                                //MessageBox.Show("Appelsapsaus");
+                                            for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                             {
-                                                SelectedCard = j; //set the SelectedCard to i for future reference
+                                                if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
+                                                {
+                                                    SelectedCard = j; //set the SelectedCard to i for future reference
+                                                }
                                             }
                                         }
+                                            //MessageBox.Show("Ik heb kk geil rn");
                                         if (CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingOne" || CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingTwo" || CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingThree" || CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingFour" || CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingFive" || CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingSix" || CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingSeven" || CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoBuildingEight")
                                         {
-                                            MessageBox.Show("You attacked the enemy [BUILDING NAME] on [COORDENATES]");
+                                            MessageBox.Show("You attacked the enemy [BUILDING NAME] on [COORDENATES]"); //When you attacked an enemy building
                                         }
-                                        if (CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoSpaceStation")
+                                        else if (CardsInPlay[SelectedCard].LinkedButton == "PlayerTwoSpaceStation")
                                         {
-                                            MessageBox.Show("You attacked the enemy space station!");
+                                            MessageBox.Show("You attacked the enemy space station!"); //When you attacked the enemy station
                                         }
                                         else
                                         {
-                                            MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton);
+                                            MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //When you attacked an enemy card
                                         }
                                         i = Buttons2.Count;
                                     }
@@ -505,22 +516,7 @@ namespace StarWarsConquest
                     }
                     else
                     {
-                        
-
-                        /*if (Button == "PlayerTwoBuildingOne" || Button == "PlayerTwoBuildingTwo" || Button == "PlayerTwoBuildingThree" || Button == "PlayerTwoBuildingFour" || Button == "PlayerTwoBuildingFive" || Button == "PlayerTwoBuildingSix" || Button == "PlayerTwoBuildingSeven" || Button == "PlayerTwoBuildingEight")
-                        {
-                            MessageBox.Show("You attacked [CARD NAME] on [COORDINATES]"); //Which building did you attack?
-                            phase++; //Advance to next phase
-                        }
-                        else if (Button == "PlayerTwoSpaceStation")
-                        {
-                            MessageBox.Show("You attacked the enemy space station!"); //When you attack the enemy space station
-                            phase++; //Advances to next phase
-                        }
-                        else
-                        {
-                            MessageBox.Show("You picked the wrong card, fool"); //when you pick the wrong card
-                        }*/
+                        ButtonDoStuff(Button, "Find");
                     }
                 }
 #endregion
