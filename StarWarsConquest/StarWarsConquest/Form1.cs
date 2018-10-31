@@ -26,6 +26,7 @@ namespace StarWarsConquest
             PlayerTwoTurn.Text = Turn.ToString();
             PhilListHere();
             
+            
         }
 
         #region Variables
@@ -43,7 +44,18 @@ namespace StarWarsConquest
         Random GenNumber = new Random(); //random number to draw cards
         int CardSelect = 0; //The card that has been selected by the random
         //An array of all cards in the game
-        public string[,] Cards = new string[,] { {"TIE Fighter", "Fighter", "10", "2", "1", "Properties.Resources.TIE_FIGHTER" }, {"TIE Bomber", "Fighter", "25", "5", "3", "Properties.Resources.TIE_BOMBER"} };
+        public string[,] Cards = new string[,] { 
+        {"TIE Fighter"              , "Fighter" , "10"  , "2"   , "1"   , "0" }, 
+        {"TIE Bomber"               , "Fighter" , "25"  , "5"   , "3"   , "1"},
+        {"TIE Interceptor"          , "Fighter" , "20"  , "3"   , "2"   , "2"},
+        {"Lancer Frigate"           , "Corvette", "100" , "50"  , "20"  , "3"},
+        {"Tartan Patrol Cruiser"    , "Corvette", "120" , "45"  , "30"  , "4"},
+        {"Gozanti Cruiser"          , "Corvette", "200" , "80"  , "50"  , "5"},
+        {"Raider Corvette"          , "Corvette", "80"  , "50"  , "10"  , "6"},
+        {"Escort Carrier"           , "Corvette", "220" , "100" , "60"  , "6"},
+        {"Carrack Cruiser"          , "Frigate" , "25"  , "5"   , "3"   , "7"},
+        {"Arquitens Cruiser"        , "Frigate" , "25"  , "5"   , "3"   , "8"},
+        {"Acclamator Assault Ship"  , "Frigate" , "25"  , "5"   , "3"   , "9"} };
         //An array of all buildings in the game
         public string[,] PossibleBuildings = new string[,] { { "Mining Facility Level One", "Income", "500", "1500", "0", "Properties.Resources.Mine1", "Income1" },
         { "Mining Facility Level Two", "Income", "1000", "3000", "0", "Properties.Resources.Mine2", "Income2"},
@@ -71,6 +83,17 @@ namespace StarWarsConquest
         "PlayerOneSpaceStation", "PlayerTwoSpaceStation",
         "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16",
         "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11", "B12", "B13", "B14", "B15", "B16"};
+        //public ImageList ImagesInPlay = new ImageList();
+        public System.Drawing.Image[] ImagesInPlay = new System.Drawing.Image[] { Properties.Resources.TIE_FIGHTER,
+        Properties.Resources.TIE_BOMBER,
+        Properties.Resources.TIE_INTERCEPTOR,
+        Properties.Resources.LANCER,
+        Properties.Resources.TARTAN,
+        Properties.Resources.GOZANTI,
+        Properties.Resources.RAIDER,
+        Properties.Resources.CARRACK,
+        Properties.Resources.ARQUITENS,
+        Properties.Resources.ACCLAMATOR};
         public List<Card> CardsInPlay = new List<Card>(); //A list of all cards currently in play
         public List<Building> BuildingsInPlay = new List<Building>(); //A list of all buildings currently in play
         public List<System.Windows.Forms.Button> Buttons2 = new List<System.Windows.Forms.Button>
@@ -158,7 +181,7 @@ namespace StarWarsConquest
             Buttons2.Add(B16);
             Buttons2.Add(PlayerOneSpaceStation);
             Buttons2.Add(PlayerTwoSpaceStation);
-
+            //ImagesInPlay.Images.AddRange
         }
 
         public void UpdateVitals()
@@ -373,7 +396,15 @@ namespace StarWarsConquest
                                 //Checks weither the button being checked is eligble
                                 if (Buttons2[i].Name == "PlayerOneCardOne" || Buttons2[i].Name == "PlayerOneCardTwo" || Buttons2[i].Name == "PlayerOneCardThree" || Buttons2[i].Name == "PlayerOneCardFour" || Buttons2[i].Name == "PlayerOneCardFive" || Buttons2[i].Name == "PlayerOneCardSix" || Buttons2[i].Name == "PlayerOneCardSeven" || Buttons2[i].Name == "PlayerOneCardEight" || Buttons2[i].Name == "PlayerOneCardNine" || Buttons2[i].Name == "PlayerOneCardTen")
                                 {
-                                    Buttons2[i].Image = Properties.Resources.TIE_FIGHTER; //Sets the proper image to the button
+                                    for(int j = 0; j < Cards.Length; j++)
+                                    {
+                                        //MessageBox.Show(Selection + Cards[j, 0]);
+                                        if (Cards[j, 0] == Selection)
+                                        {
+                                            Buttons2[i].Image = ImagesInPlay[Convert.ToInt32(CardsInPlay[CardsInPlay.Count - 1].Photo)]; //sets the proper image to your card
+                                            break;
+                                        }
+                                    }
                                     CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name;
                                     for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                     {
@@ -505,7 +536,7 @@ namespace StarWarsConquest
                         {
 
                             MessageBox.Show("Reïnforcements have arrived sir! [CARD NAME] has joined your fleet!");
-                            CardSelect = GenNumber.Next(0, 1); //To draw a random card from the stack
+                            CardSelect = GenNumber.Next(0, 12); //To draw a random card from the stack
                             Card NewCard = new Card() //gets the right stats for the card that you drew
                             {
                                 ID = Identification,
@@ -522,7 +553,7 @@ namespace StarWarsConquest
                             ButtonDoStuff(CardsInPlay[CardsInPlay.Count - 1].Name, "ChangePhoto");
 
                             MessageBox.Show("Name: " + CardsInPlay[CardsInPlay.Count-1].Name + "\nClass: " + CardsInPlay[CardsInPlay.Count - 1].Class + "\nCost: " +  CardsInPlay[CardsInPlay.Count - 1].Cost + "\nHealth: " + CardsInPlay[CardsInPlay.Count - 1].Health + "\nDamage: " + CardsInPlay[CardsInPlay.Count - 1].Damage + "\nPosition: " + CardsInPlay[CardsInPlay.Count - 1].LinkedButton);
-                            phase++;//So the game advances to the next phase
+                            //phase++;//So the game advances to the next phase
                             FirstClick = !FirstClick;
                             Clicked = FirstClick; //Indicates you used the first click so the next click will be the second click
                         }

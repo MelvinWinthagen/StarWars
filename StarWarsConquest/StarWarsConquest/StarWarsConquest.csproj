@@ -97,5 +97,16 @@
   <ItemGroup>
     <None Include="Pictures\TIE_FIGHTER.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pictures\ACCLAMATOR.png" />
+    <Content Include="Pictures\ARQUITENS.png" />
+    <Content Include="Pictures\CARRACK.png" />
+    <Content Include="Pictures\GOZANTI.png" />
+    <Content Include="Pictures\LANCER.png" />
+    <Content Include="Pictures\RAIDER.png" />
+    <Content Include="Pictures\TARTAN.png" />
+    <Content Include="Pictures\TIE_BOMBER.jpg" />
+    <Content Include="Pictures\TIE_INTERCEPTOR.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

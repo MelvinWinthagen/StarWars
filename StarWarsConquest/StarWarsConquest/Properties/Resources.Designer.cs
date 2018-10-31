@@ -63,6 +63,76 @@ namespace StarWarsConquest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ACCLAMATOR {
+            get {
+                object obj = ResourceManager.GetObject("ACCLAMATOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ARQUITENS {
+            get {
+                object obj = ResourceManager.GetObject("ARQUITENS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CARRACK {
+            get {
+                object obj = ResourceManager.GetObject("CARRACK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GOZANTI {
+            get {
+                object obj = ResourceManager.GetObject("GOZANTI", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LANCER {
+            get {
+                object obj = ResourceManager.GetObject("LANCER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RAIDER {
+            get {
+                object obj = ResourceManager.GetObject("RAIDER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TARTAN {
+            get {
+                object obj = ResourceManager.GetObject("TARTAN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Test {
             get {
                 object obj = ResourceManager.GetObject("Test", resourceCulture);
@@ -73,9 +143,29 @@ namespace StarWarsConquest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TIE_BOMBER {
+            get {
+                object obj = ResourceManager.GetObject("TIE_BOMBER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TIE_FIGHTER {
             get {
                 object obj = ResourceManager.GetObject("TIE_FIGHTER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TIE_INTERCEPTOR {
+            get {
+                object obj = ResourceManager.GetObject("TIE_INTERCEPTOR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

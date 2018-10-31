@@ -124,4 +124,31 @@
   <data name="TIE_FIGHTER" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\TIE_FIGHTER.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ACCLAMATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\ACCLAMATOR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ARQUITENS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\ARQUITENS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CARRACK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\CARRACK.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GOZANTI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\GOZANTI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LANCER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\LANCER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RAIDER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\RAIDER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TARTAN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\TARTAN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TIE_BOMBER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\TIE_BOMBER.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TIE_INTERCEPTOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\TIE_INTERCEPTOR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
