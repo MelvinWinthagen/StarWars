@@ -279,6 +279,82 @@ namespace StarWarsConquest
                         }
                     }
                 }
+                else
+                {
+                    for (int i = 0; i < Buttons2.Count; i++)
+                    {
+                        if (Selection == Buttons2[i + 2].Name)
+                        {
+                            //MessageBox.Show(phase.ToString());
+                            if (phase == 2)
+                            {
+                                MessageBox.Show("You have selected : " + CardsInPlay[i].Name);
+                                Buttons2[i + 2].Image = null;
+                                i = Buttons2.Count;
+                            }
+                            else if (phase == 3)
+                            {
+                                if (Clicked)
+                                {
+                                    //MessageBox.Show("Geile Beer");
+                                    if (Selection == Buttons2[i + 2].Name)
+                                    {
+                                        CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
+                                        i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
+                                        //MessageBox.Show("Appelsapsaus");
+                                        for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
+                                        {
+                                            if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
+                                            {
+                                                SelectedCard = j; //set the SelectedCard to i for future reference
+                                            }
+                                        }
+                                        MessageBox.Show("You selected " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton);
+                                        //Clicked = !Clicked;
+                                    }
+                                }
+
+
+
+                                else if (!Clicked)
+                                {
+                                    if (Selection == Buttons2[i + 2].Name)
+                                    {
+                                        if (Selection == Buttons2[i + 2].Name)
+                                        {
+                                            CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
+                                            i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
+                                                                //MessageBox.Show("Appelsapsaus");
+                                            for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
+                                            {
+                                                if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
+                                                {
+                                                    SelectedCard = j; //set the SelectedCard to i for future reference
+                                                }
+                                            }
+                                        }
+                                        //MessageBox.Show("Ik heb kk geil rn");
+                                        if (CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingOne" || CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingTwo" || CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingThree" || CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingFour" || CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingFive" || CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingSix" || CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingSeven" || CardsInPlay[SelectedCard].LinkedButton == "PlayerOneBuildingEight")
+                                        {
+                                            MessageBox.Show("You attacked the enemy [BUILDING NAME] on [COORDENATES]"); //When you attacked an enemy building
+                                        }
+                                        else if (CardsInPlay[SelectedCard].LinkedButton == "PlayerOneSpaceStation")
+                                        {
+                                            MessageBox.Show("You attacked the enemy space station!"); //When you attacked the enemy station
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //When you attacked an enemy card
+                                        }
+                                        i = Buttons2.Count;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+
 
             }
             else if (Category == "ChangePhoto") //When you want to change the photo (card) on a button
@@ -345,37 +421,73 @@ namespace StarWarsConquest
                             }
 
                         }
-
-
-
-
                     }
                 }
                 else
                 {
                     for (int i = 0; i < Buttons2.Count; i++)
                     {
-                        if (Buttons2[i].Image == null) //When the selected button has no photo (card) assigned
-                        {
-                            //Checks weither the button being checked is eligble
-                            if (Buttons2[i].Name == "PlayerTwoCardOne" || Buttons2[i].Name == "PlayerTwoCardTwo" || Buttons2[i].Name == "PlayerTwoCardThree" || Buttons2[i].Name == "PlayerTwoCardFour" || Buttons2[i].Name == "PlayerTwoCardFive" || Buttons2[i].Name == "PlayerTwoCardSix" || Buttons2[i].Name == "PlayerTwoCardSeven" || Buttons2[i].Name == "PlayerTwoCardEight" || Buttons2[i].Name == "PlayerTwoCardNine" || Buttons2[i].Name == "PlayerTwoCardTen")
-                            {
-                                Buttons2[i].Image = Properties.Resources.TIE_FIGHTER; //Sets the proper image to the button
-                                CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name; //Assign the linked button to the card
-                                i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
-                            }
-                            else //If no elligble buttons are found, that means that the player's hand is already full
-                            {
-                                if (i > 10) //prevents the first two buttons from returning the full hand error
-                                {
-                                    MessageBox.Show("Your hand is already full");
-                                }
 
+
+                        if (phase == 1)
+                        {
+                            //MessageBox.Show("Ja let's go");
+                            if (Buttons2[i].Image == null) //When the selected button has no photo (card) assigned
+                            {
+                                //Checks weither the button being checked is eligble
+                                if (Buttons2[i].Name == "PlayerTwoCardOne" || Buttons2[i].Name == "PlayerTwoCardTwo" || Buttons2[i].Name == "PlayerTwoCardThree" || Buttons2[i].Name == "PlayerTwoCardFour" || Buttons2[i].Name == "PlayerTwoCardFive" || Buttons2[i].Name == "PlayerTwoCardSix" || Buttons2[i].Name == "PlayerTwoCardSeven" || Buttons2[i].Name == "PlayerTwoCardEight" || Buttons2[i].Name == "PlayerTwoCardNine" || Buttons2[i].Name == "PlayerTwoCardTen")
+                                {
+                                    Buttons2[i].Image = Properties.Resources.TIE_FIGHTER; //Sets the proper image to the button
+                                    CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name;
+                                    for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
+                                    {
+                                        if (CardsInPlay[j].LinkedButton == Buttons2[i].Name) //when the linked button of the current card in the list is equal to the selected button
+                                        {
+                                            SelectedCard = j; //set the SelectedCard to i for future reference
+                                        }
+                                    } //Assign the linked button to the card
+                                    i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
+                                }
+                                else //If no elligble buttons are found, that means that the player's hand is already full
+                                {
+                                    if (i > 1) //prevents the first two buttons from returning the full hand error
+                                    {
+                                        MessageBox.Show("Your hand is already full");
+                                    }
+
+                                }
                             }
                         }
+                        else if (phase == 2)
+                        {
+                            //MessageBox.Show("Sappig");
+                            if (Buttons2[i].Image == null)
+                            {
+                                //if (Buttons2[i].Name == "A1" || Buttons2[i].Name == "A2" || Buttons2[i].Name == "A3" || Buttons2[i].Name == "A4" || Buttons2[i].Name == "A5" || Buttons2[i].Name == "A6" || Buttons2[i].Name == "A7" || Buttons2[i].Name == "A8" || Buttons2[i].Name == "A9" || Buttons2[i].Name == "A10" || Buttons2[i].Name == "A11" || Buttons2[i].Name == "A12" || Buttons2[i].Name == "A13" || Buttons2[i].Name == "A14" || Buttons2[i].Name == "A15" || Buttons2[i].Name == "A16")
+                                if (Selection == Buttons2[i].Name)
+                                {
+                                    Buttons2[i].Image = Properties.Resources.TIE_FIGHTER; //Sets the proper image to the button
+                                    CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name; //Assign the linked button to the card
+                                    i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
+                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " To " + CardsInPlay[SelectedCard].LinkedButton);
+                                    if (Turn == 1)
+                                    {
+                                        phase++;
+                                    }
+                                }
+                                /*else
+                                {
+                                    if (i > 38)
+                                    {
+                                        MessageBox.Show("Chinezen stinken");
+                                    }
+                                }*/
+                            }
 
+                        }
                     }
                 }
+
             }
         }
 
@@ -517,6 +629,7 @@ namespace StarWarsConquest
                     else
                     {
                         ButtonDoStuff(Button, "Find");
+                        phase++;
                     }
                 }
 #endregion
@@ -612,61 +725,7 @@ namespace StarWarsConquest
                             Identification++;
                             CardsInPlay.Add(NewCard);
 
-                            if (PlayerTwoCardOne.Image == null) //Assigns the card to your hand. Will shuffle through your hand to find an empty spot. If there are none the action is canceled or something idk
-                            {
-                                PlayerTwoCardOne.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardOne.Name;
-                            }
-                            else if (PlayerTwoCardTwo.Image == null)
-                            {
-                                PlayerTwoCardTwo.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardTwo.Name;
-                            }
-                            else if (PlayerTwoCardThree.Image == null)
-                            {
-                                PlayerTwoCardThree.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardThree.Name;
-                            }
-                            else if (PlayerTwoCardFour.Image == null)
-                            {
-                                PlayerTwoCardFour.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardFour.Name;
-                            }
-                            else if (PlayerTwoCardFive.Image == null)
-                            {
-                                PlayerTwoCardFive.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardFive.Name;
-                            }
-                            else if (PlayerTwoCardSix.Image == null)
-                            {
-                                PlayerTwoCardSix.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardSix.Name;
-                            }
-                            else if (PlayerTwoCardSeven.Image == null)
-                            {
-                                PlayerTwoCardSeven.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardSeven.Name;
-                            }
-                            else if (PlayerTwoCardEight.Image == null)
-                            {
-                                PlayerTwoCardEight.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardEight.Name;
-                            }
-                            else if (PlayerTwoCardNine.Image == null)
-                            {
-                                PlayerTwoCardNine.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardNine.Name;
-                            }
-                            else if (PlayerTwoCardTen.Image == null)
-                            {
-                                PlayerTwoCardTen.Image = Properties.Resources.TIE_FIGHTER;
-                                NewCard.LinkedButton = PlayerTwoCardTen.Name;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Your hand is already full");
-                            }
-
+                            ButtonDoStuff(CardsInPlay[CardsInPlay.Count - 1].Name, "ChangePhoto");
                             MessageBox.Show("Name: " + CardsInPlay[CardsInPlay.Count - 1].Name + "\nClass: " + CardsInPlay[CardsInPlay.Count - 1].Class + "\nCost: " + CardsInPlay[CardsInPlay.Count - 1].Cost + "\nHealth: " + CardsInPlay[CardsInPlay.Count - 1].Health + "\nDamage: " + CardsInPlay[CardsInPlay.Count - 1].Damage + "\nPosition: " + CardsInPlay[CardsInPlay.Count - 1].LinkedButton);
                             phase++;//So the game advances to the next phase
                             FirstClick = !FirstClick;
@@ -680,7 +739,7 @@ namespace StarWarsConquest
                         }
                     }
                 }
-#endregion
+                #endregion
                 #region P2Phase2
                 else if (Gamephase == 2) //Executes when it is the second phase (Placing cards)
                 {
@@ -688,54 +747,7 @@ namespace StarWarsConquest
                     {
                         if (Button == "PlayerTwoCardOne" || Button == "PlayerTwoCardTwo" || Button == "PlayerTwoCardThree" || Button == "PlayerTwoCardFour" || Button == "PlayerTwoCardFive" || Button == "PlayerTwoCardSix" || Button == "PlayerTwoCardSeven" || Button == "PlayerTwoCardEight" || Button == "PlayerTwoCardNine" || Button == "PlayerTwoCardTen") //Did you select the right card?
                         {
-                            for (int i = 0; i < CardsInPlay.Count; i++) //Finding the card that you clicked
-                            {
-                                if (CardsInPlay[i].LinkedButton == Button) //when the linked button of the current card in the list is equal to the selected button
-                                {
-                                    MessageBox.Show("You have selected : " + CardsInPlay[i].Name);
-                                    if (PlayerTwoCardOne.Name == Button) //cycle through your hand to remove the right card from your hand
-                                    {
-                                        PlayerTwoCardOne.Image = null;
-                                    }
-                                    else if (PlayerTwoCardTwo.Name == Button)
-                                    {
-                                        PlayerTwoCardTwo.Image = null;
-                                    }
-                                    else if (PlayerTwoCardThree.Name == Button)
-                                    {
-                                        PlayerTwoCardThree.Image = null;
-                                    }
-                                    else if (PlayerTwoCardFour.Name == Button)
-                                    {
-                                        PlayerTwoCardFour.Image = null;
-                                    }
-                                    else if (PlayerTwoCardFive.Name == Button)
-                                    {
-                                        PlayerTwoCardFive.Image = null;
-                                    }
-                                    else if (PlayerTwoCardSix.Name == Button)
-                                    {
-                                        PlayerTwoCardSix.Image = null;
-                                    }
-                                    else if (PlayerTwoCardSeven.Name == Button)
-                                    {
-                                        PlayerTwoCardSeven.Image = null;
-                                    }
-                                    else if (PlayerTwoCardEight.Name == Button)
-                                    {
-                                        PlayerTwoCardEight.Image = null;
-                                    }
-                                    else if (PlayerTwoCardNine.Name == Button)
-                                    {
-                                        PlayerTwoCardNine.Image = null;
-                                    }
-                                    else if (PlayerTwoCardTen.Name == Button)
-                                    {
-                                        PlayerTwoCardTen.Image = null;
-                                    }
-                                    SelectedCard = i; //set the SelectedCard to i for future reference
-                                }
-                            }
+                            ButtonDoStuff(Button, "Find");
                         }
                         else //Did you select the wrong card?
                         {
@@ -746,314 +758,10 @@ namespace StarWarsConquest
                     {
                         if (Button == "B1" || Button == "B2" || Button == "B3" || Button == "B4" || Button == "B5" || Button == "B6" || Button == "B7" || Button == "B8" || Button == "B9" || Button == "B10" || Button == "B11" || Button == "B12" || Button == "B13" || Button == "B14" || Button == "B15" || Button == "B16") //Did you select the right button?
                         {
+                            ButtonDoStuff(Button, "ChangePhoto");
+                            phase++;
                             PlayerTwoCreds = PlayerTwoCreds - CardsInPlay[SelectedCard].Cost; // Substracts the cost of the card from your credit pool
                             UpdateVitals(); //so the new credit count is displayed properly
-                            if (B1.Text == Button) // sets the card's image to the new position
-                            {
-                                if (B1.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B1.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-
-                            }
-                            else if (B2.Text == Button)
-                            {
-                                if (B2.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B2.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B3.Text == Button)
-                            {
-                                if (B3.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B3.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B4.Text == Button)
-                            {
-                                if (B4.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B4.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B5.Text == Button)
-                            {
-                                if (B5.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B5.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B6.Text == Button)
-                            {
-                                if (B6.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B6.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B7.Text == Button)
-                            {
-                                if (B7.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B7.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B8.Text == Button)
-                            {
-                                if (B8.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B8.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B9.Text == Button)
-                            {
-                                if (B9.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B9.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B10.Text == Button)
-                            {
-                                if (B10.Image == null)
-
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B10.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B11.Text == Button)
-                            {
-                                if (B11.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B11.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B12.Text == Button)
-                            {
-                                if (B12.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B12.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B13.Text == Button)
-                            {
-                                if (B13.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B13.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B14.Text == Button)
-                            {
-                                if (B14.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B14.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B15.Text == Button)
-                            {
-                                if (B15.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B15.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
-                            else if (B16.Text == Button)
-                            {
-                                if (B16.Image == null)
-                                {
-                                    CardsInPlay[SelectedCard].LinkedButton = Button; //sets the new linked button
-                                    B16.Image = Properties.Resources.TIE_FIGHTER;
-                                    MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " to " + CardsInPlay[SelectedCard].LinkedButton);
-                                    phase++; //So the game advances to the next phase
-                                    if (Turn == 1)
-                                    {
-                                        phase++; //so attacking is skipped during the first turn (Nothing to attack in turn 1)
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This position is already occupied");
-                                    Failed = !Failed;
-                                }
-                            }
 
                         }
                         else //Did you select the wrong button
@@ -1112,251 +820,18 @@ namespace StarWarsConquest
                     }
 
                 }
-#endregion
+                #endregion
                 #region P2Phase3
                 else if (Gamephase == 3)
                 {
                     if (FirstClick)
                     {
-                        if (Button == "B1" || Button == "B2" || Button == "B3" || Button == "B4" || Button == "B5" || Button == "B6" || Button == "B7" || Button == "B8" || Button == "B9" || Button == "B10" || Button == "B11" || Button == "B12" || Button == "B13" || Button == "B14" || Button == "B15" || Button == "B16") //Did you select the right button?
-                        {
-                            for (int i = 0; i < CardsInPlay.Count; i++) //Finding the card that you clicked
-                            {
-                                if (CardsInPlay[i].LinkedButton == Button) //when the linked button of the current card in the list is equal to the selected button
-                                {
-                                    MessageBox.Show("You have selected : " + CardsInPlay[i].Name);
-                                    SelectedCard = i; //set the SelectedCard to i for future reference
-                                }
-                            }
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("You picked the wrong card, fool"); //when you pick the wrong card
-                        }
+                        ButtonDoStuff(Button, "Find");
                     }
                     else
                     {
-                        if (Button == "A1" || Button == "A2" || Button == "A3" || Button == "A4" || Button == "A5" || Button == "A6" || Button == "A7" || Button == "A8" || Button == "A9" || Button == "A10" || Button == "A11" || Button == "A12" || Button == "A13" || Button == "A14" || Button == "A15" || Button == "A16") //Did you select the right button?
-                        {
-                            for (int i = 0; i < CardsInPlay.Count; i++) //Finding the card that you clicked
-                            {
-                                if (CardsInPlay[i].LinkedButton == Button) //when the linked button of the current card in the list is equal to the selected button
-                                {
-                                    MessageBox.Show("You have selected : " + CardsInPlay[i].Name);
-                                    SelectedCard = i; //set the SelectedCard to i for future reference
-                                }
-                            }
-                            if (A1.Text == Button)
-                            {
-                                if (A1.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A2.Text == Button)
-                            {
-                                if (A2.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A3.Text == Button)
-                            {
-                                if (A3.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A4.Text == Button)
-                            {
-                                if (A4.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A5.Text == Button)
-                            {
-                                if (A5.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A6.Text == Button)
-                            {
-                                if (A6.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-
-                            else if (A7.Text == Button)
-                            {
-                                if (A7.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A8.Text == Button)
-                            {
-                                if (A8.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-
-                            else if (A9.Text == Button)
-                            {
-                                if (A9.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A10.Text == Button)
-                            {
-                                if (A10.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A11.Text == Button)
-                            {
-                                if (A11.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A12.Text == Button)
-                            {
-                                if (A12.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A13.Text == Button)
-                            {
-                                if (A13.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A14.Text == Button)
-                            {
-                                if (A14.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A15.Text == Button)
-                            {
-                                if (A15.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                            else if (A16.Text == Button)
-                            {
-                                if (A16.Image != null)
-                                {
-                                    MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //Which enemy did you attack?
-                                    phase++; //advance to next phase
-                                }
-                                else
-                                {
-                                    MessageBox.Show("There is nothing here");
-                                }
-                            }
-                        }
-
-                        else if (Button == "PlayerOneBuildingOne" || Button == "PlayerOneBuildingTwo" || Button == "PlayerOneBuildingThree" || Button == "PlayerOneBuildingFour" || Button == "PlayerOneBuildingFive" || Button == "PlayerOneBuildingSix" || Button == "PlayerOneBuildingSeven" || Button == "PlayerOneBuildingEight")
-                        {
-                            MessageBox.Show("You attacked [CARD NAME] on [COORDINATES]"); //Which building did you attack?
-                            phase++; //Advance to next phase
-                        }
-                        else if (Button == "PlayerOneSpaceStation")
-                        {
-                            MessageBox.Show("You attacked the enemy space station!"); //When you attack the enemy space station
-                            phase++; //Advances to next phase
-                        }
-                        else
-                        {
-                            MessageBox.Show("You picked the wrong card, fool"); //when you pick the wrong card
-                        }
+                        ButtonDoStuff(Button, "Find");
+                        phase++;
                     }
                 }
                 #endregion
