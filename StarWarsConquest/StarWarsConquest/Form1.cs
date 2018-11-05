@@ -100,6 +100,8 @@ namespace StarWarsConquest
         (
         )
         ; //3spooky5me
+        public Card NewCard;
+        public Card SelectedCardObject;
         public int Identification = 0; //Adds an ID to a drawn card
         public int BuildingIdentification = 0; //Adds an ID to a built building
         public int SelectedCard = 0; //Keeps track which card you have currently selected
@@ -235,7 +237,9 @@ namespace StarWarsConquest
                             //MessageBox.Show(phase.ToString());
                             if (phase == 2)
                             {
-                                MessageBox.Show("You have selected : " + CardsInPlay[i].Name);
+                                
+                                MessageBox.Show("You have selected : " + NewCard.Name);
+                                SelectedCardObject = NewCard;
                                 Buttons2[i + 2].Image = null;
                                 i = Buttons2.Count;
                             }
@@ -246,13 +250,14 @@ namespace StarWarsConquest
                                     //MessageBox.Show("Geile Beer");
                                     if (Selection == Buttons2[i + 2].Name)
                                     {
-                                        CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
+                                        SelectedCardObject.LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
                                         i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
                                         //MessageBox.Show("Appelsapsaus");
                                         for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                         {
-                                            if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
+                                            if (SelectedCardObject.LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
                                             {
+                                                //MessageBox.Show("J : " + j + "\n Selection : " + Selection);
                                                 SelectedCard = j; //set the SelectedCard to i for future reference
                                             }
                                         }
@@ -269,6 +274,21 @@ namespace StarWarsConquest
                                     {
                                         if (Selection == Buttons2[i + 2].Name)
                                         {
+                                            MessageBox.Show("Kaart 1: " + CardsInPlay[0].Name + CardsInPlay[0].LinkedButton + "\nKaart 2: " + CardsInPlay[1].Name + CardsInPlay[1].LinkedButton + "\nKaart 3: " + CardsInPlay[2].Name + CardsInPlay[2].LinkedButton);
+
+                                            //SelectedCardObject = CardsInPlay[CardsInPlay.Count - 1];
+                                            for (int j = 0; j < CardsInPlay.Count; j++)
+                                            {
+                                                MessageBox.Show("Selection: " + Selection + "\n LinkedButton: " + CardsInPlay[j].LinkedButton);
+                                                if (Selection == CardsInPlay[j].LinkedButton)
+                                                {
+                                                    SelectedCardObject = CardsInPlay[j];
+                                                    MessageBox.Show("Enne");
+                                                }
+                                            }
+                                            MessageBox.Show("Name: " + SelectedCardObject.Name);
+
+
                                             CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
                                             i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
                                                                 //MessageBox.Show("Appelsapsaus");
@@ -277,6 +297,8 @@ namespace StarWarsConquest
                                                 if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
                                                 {
                                                     SelectedCard = j; //set the SelectedCard to i for future reference
+                                                    //MessageBox.Show("Naam eigen kaart: " + CardsInPlay[SelectedCard].Name + "\nNaam kaart enemy: " + SelectedCardObject.Name + "\nPositie enemy: " + CardsInPlay[j].Name);
+                                                    break;
                                                 }
                                             }
                                         }
@@ -291,7 +313,11 @@ namespace StarWarsConquest
                                         }
                                         else
                                         {
-                                            MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //When you attacked an enemy card
+                                            CardsInPlay[CardsInPlay.Count - 1] = SelectedCardObject;
+                                            MessageBox.Show("You attacked " + SelectedCardObject.Name + " on " + SelectedCardObject.LinkedButton); //When you attacked an enemy card
+                                            SelectedCardObject.Health = SelectedCardObject.Health - CardsInPlay[SelectedCard].Damage;
+                                            MessageBox.Show("Your attack did " + CardsInPlay[SelectedCard].Damage + " and the target has " + SelectedCardObject.Health + " hitpoints left.");
+                                            
                                         }
                                         i = Buttons2.Count;
                                     }
@@ -311,7 +337,9 @@ namespace StarWarsConquest
                             //MessageBox.Show(phase.ToString());
                             if (phase == 2)
                             {
-                                MessageBox.Show("You have selected : " + CardsInPlay[i].Name);
+                                MessageBox.Show(NewCard.Name);
+                                MessageBox.Show("You have selected : " + NewCard.Name);
+                                SelectedCardObject = NewCard;
                                 Buttons2[i + 2].Image = null;
                                 i = Buttons2.Count;
                             }
@@ -322,13 +350,14 @@ namespace StarWarsConquest
                                     //MessageBox.Show("Geile Beer");
                                     if (Selection == Buttons2[i + 2].Name)
                                     {
-                                        CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
+                                        //SelectedCardObject.LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
                                         i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
                                         //MessageBox.Show("Appelsapsaus");
                                         for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                         {
-                                            if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
+                                            if (SelectedCardObject.LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
                                             {
+                                                MessageBox.Show("Heyyyyyyyy");
                                                 SelectedCard = j; //set the SelectedCard to i for future reference
                                             }
                                         }
@@ -345,12 +374,12 @@ namespace StarWarsConquest
                                     {
                                         if (Selection == Buttons2[i + 2].Name)
                                         {
-                                            CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
+                                            SelectedCardObject.LinkedButton = Buttons2[i + 2].Name; //Assign the linked button to the card
                                             i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
                                                                 //MessageBox.Show("Appelsapsaus");
                                             for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                             {
-                                                if (CardsInPlay[j].LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
+                                                if (SelectedCardObject.LinkedButton == Selection) //when the linked button of the current card in the list is equal to the selected button
                                                 {
                                                     SelectedCard = j; //set the SelectedCard to i for future reference
                                                 }
@@ -367,7 +396,11 @@ namespace StarWarsConquest
                                         }
                                         else
                                         {
-                                            MessageBox.Show("You attacked " + CardsInPlay[SelectedCard].Name + " on " + CardsInPlay[SelectedCard].LinkedButton); //When you attacked an enemy card
+                                            //SelectedCardObject = CardsInPlay[SelectedCard];
+                                            MessageBox.Show("You attacked " + SelectedCardObject.Name + " on " + SelectedCardObject.LinkedButton); //When you attacked an enemy card
+                                            SelectedCardObject.Health = SelectedCardObject.Health - CardsInPlay[SelectedCard].Damage;
+                                            MessageBox.Show("Your attack did " + CardsInPlay[SelectedCard].Damage + " and the target has " + SelectedCardObject.Health + " hitpoints left.");
+                                            CardsInPlay[CardsInPlay.Count - 1] = SelectedCardObject;
                                         }
                                         i = Buttons2.Count;
                                     }
@@ -405,10 +438,10 @@ namespace StarWarsConquest
                                             break;
                                         }
                                     }
-                                    CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name;
+                                    NewCard.LinkedButton = Buttons2[i].Name;
                                     for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                     {
-                                        if (CardsInPlay[j].LinkedButton == Buttons2[i].Name) //when the linked button of the current card in the list is equal to the selected button
+                                        if (NewCard.LinkedButton == Buttons2[i].Name) //when the linked button of the current card in the list is equal to the selected button
                                         {
                                             SelectedCard = j; //set the SelectedCard to i for future reference
                                         }
@@ -433,8 +466,17 @@ namespace StarWarsConquest
                                 //if (Buttons2[i].Name == "A1" || Buttons2[i].Name == "A2" || Buttons2[i].Name == "A3" || Buttons2[i].Name == "A4" || Buttons2[i].Name == "A5" || Buttons2[i].Name == "A6" || Buttons2[i].Name == "A7" || Buttons2[i].Name == "A8" || Buttons2[i].Name == "A9" || Buttons2[i].Name == "A10" || Buttons2[i].Name == "A11" || Buttons2[i].Name == "A12" || Buttons2[i].Name == "A13" || Buttons2[i].Name == "A14" || Buttons2[i].Name == "A15" || Buttons2[i].Name == "A16")
                                 if (Selection == Buttons2[i].Name)
                                 {
-                                    Buttons2[i].Image = Properties.Resources.TIE_FIGHTER; //Sets the proper image to the button
-                                    CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name; //Assign the linked button to the card
+                                    for (int j = 0; j < Cards.Length; j++)
+                                    {
+                                        //MessageBox.Show(Selection + Cards[j, 0]);
+                                        if (Cards[j, 0] == CardsInPlay[SelectedCard].Name)
+                                        {
+                                            Buttons2[i].Image = ImagesInPlay[Convert.ToInt32(CardsInPlay[CardsInPlay.Count - 1].Photo)]; //sets the proper image to your card
+                                            break;
+                                        }
+                                    } //Sets the proper image to the button
+                                    SelectedCardObject.LinkedButton = Buttons2[i].Name; //Assign the linked button to the card
+                                    CardsInPlay[SelectedCard].LinkedButton = Buttons2[i].Name;
                                     i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
                                     MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " To " + CardsInPlay[SelectedCard].LinkedButton);
                                     if (Turn == 1)
@@ -469,10 +511,10 @@ namespace StarWarsConquest
                                 if (Buttons2[i].Name == "PlayerTwoCardOne" || Buttons2[i].Name == "PlayerTwoCardTwo" || Buttons2[i].Name == "PlayerTwoCardThree" || Buttons2[i].Name == "PlayerTwoCardFour" || Buttons2[i].Name == "PlayerTwoCardFive" || Buttons2[i].Name == "PlayerTwoCardSix" || Buttons2[i].Name == "PlayerTwoCardSeven" || Buttons2[i].Name == "PlayerTwoCardEight" || Buttons2[i].Name == "PlayerTwoCardNine" || Buttons2[i].Name == "PlayerTwoCardTen")
                                 {
                                     Buttons2[i].Image = Properties.Resources.TIE_FIGHTER; //Sets the proper image to the button
-                                    CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name;
+                                    NewCard.LinkedButton = Buttons2[i].Name;
                                     for (int j = 0; j < CardsInPlay.Count; j++) //Finding the card that you clicked
                                     {
-                                        if (CardsInPlay[j].LinkedButton == Buttons2[i].Name) //when the linked button of the current card in the list is equal to the selected button
+                                        if (NewCard.LinkedButton == Buttons2[i].Name) //when the linked button of the current card in the list is equal to the selected button
                                         {
                                             SelectedCard = j; //set the SelectedCard to i for future reference
                                         }
@@ -481,7 +523,7 @@ namespace StarWarsConquest
                                 }
                                 else //If no elligble buttons are found, that means that the player's hand is already full
                                 {
-                                    if (i > 1) //prevents the first two buttons from returning the full hand error
+                                    if (i > 11) //prevents the first two buttons from returning the full hand error
                                     {
                                         MessageBox.Show("Your hand is already full");
                                     }
@@ -498,7 +540,8 @@ namespace StarWarsConquest
                                 if (Selection == Buttons2[i].Name)
                                 {
                                     Buttons2[i].Image = Properties.Resources.TIE_FIGHTER; //Sets the proper image to the button
-                                    CardsInPlay[CardsInPlay.Count - 1].LinkedButton = Buttons2[i].Name; //Assign the linked button to the card
+                                    SelectedCardObject.LinkedButton = Buttons2[i].Name; //Assign the linked button to the card
+                                    CardsInPlay[SelectedCard].LinkedButton = Buttons2[i].Name;
                                     i = Buttons2.Count; //To break out of the loop when a photo (card) has been assigned
                                     MessageBox.Show("You deployed " + CardsInPlay[SelectedCard].Name + " To " + CardsInPlay[SelectedCard].LinkedButton);
                                     if (Turn == 1)
@@ -536,8 +579,8 @@ namespace StarWarsConquest
                         {
 
                             MessageBox.Show("Reïnforcements have arrived sir! [CARD NAME] has joined your fleet!");
-                            CardSelect = GenNumber.Next(0, 12); //To draw a random card from the stack
-                            Card NewCard = new Card() //gets the right stats for the card that you drew
+                            CardSelect = GenNumber.Next(0, 11); //To draw a random card from the stack
+                            NewCard = new Card() //gets the right stats for the card that you drew
                             {
                                 ID = Identification,
                                 Name = Cards[CardSelect, 0],
@@ -553,7 +596,7 @@ namespace StarWarsConquest
                             ButtonDoStuff(CardsInPlay[CardsInPlay.Count - 1].Name, "ChangePhoto");
 
                             MessageBox.Show("Name: " + CardsInPlay[CardsInPlay.Count-1].Name + "\nClass: " + CardsInPlay[CardsInPlay.Count - 1].Class + "\nCost: " +  CardsInPlay[CardsInPlay.Count - 1].Cost + "\nHealth: " + CardsInPlay[CardsInPlay.Count - 1].Health + "\nDamage: " + CardsInPlay[CardsInPlay.Count - 1].Damage + "\nPosition: " + CardsInPlay[CardsInPlay.Count - 1].LinkedButton);
-                            //phase++;//So the game advances to the next phase
+                            phase++;//So the game advances to the next phase
                             FirstClick = !FirstClick;
                             Clicked = FirstClick; //Indicates you used the first click so the next click will be the second click
                         }
@@ -743,7 +786,7 @@ namespace StarWarsConquest
                         {
                             MessageBox.Show("Reïnforcements have arrived sir! [CARD NAME] has joined your fleet!");
                             CardSelect = GenNumber.Next(0, 1); //To draw a random card from the stack
-                            Card NewCard = new Card() //gets the right stats for the card that you drew
+                            NewCard = new Card() //gets the right stats for the card that you drew
                             {
                                 ID = Identification,
                                 Name = Cards[CardSelect, 0],
